@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Profile">
+
+    <!-- Top View -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <View
+            android:id="@+id/topView"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="#1BB184" />
+
+        <ImageView
+            android:id="@+id/Back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            android:background="#1BB184"
+            android:contentDescription="Logo"
+            android:src="@drawable/ic_arrow_back" />
+    </RelativeLayout>
+
+    <!-- Decorative Wave View -->
+    <View
+        android:id="@+id/view5"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/wave" />
+
+    <!-- Profile Image -->
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/img_profile"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center"
+        android:scaleType="centerCrop"
+        android:onClick="onChangeAvataClick"
+        android:src="@drawable/avthehe"
+        app:strokeColor="#000000"
+        app:strokeWidth="2dp"
+        app:shapeAppearanceOverlay="@style/RoundedImageViewStyle" />
+
+    <!-- Name TextView -->
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="Nguyễn Văn A"
+        android:textColor="@android:color/black"
+        android:textSize="20sp" />
+
+    <!-- Email TextView -->
+    <TextView
+        android:id="@+id/tv_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="nguyenvana@example.com"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="16sp" />
+    <TextView
+
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:gravity="center"
+        android:text=""
+        android:textColor="@android:color/darker_gray"
+        android:background="#1BB083"
+        android:textSize="16sp" />
+
+    <!-- GridView -->
+    <GridView
+        android:id="@+id/gridView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="5dp"
+        android:scrollbars="none"
+        android:numColumns="2" />
+
+    <!-- Button Section -->
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:stretchColumns="*">
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <!-- Edit Profile Button -->
+            <Button
+                android:id="@+id/btnEditProfile"
+
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+
+                android:backgroundTint="#1BB184"
+                android:text="Chỉnh sửa cá nhân"
+                android:textColor="@android:color/white" />
+
+            <!-- Logout Button -->
+            <Button
+                android:id="@+id/btnLogout"
+
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+
+                android:backgroundTint="#979595"
+                android:text="Đăng xuất"
+                android:textColor="#000000" />
+
+        </TableRow>
+    </TableLayout>
+
+</LinearLayout>

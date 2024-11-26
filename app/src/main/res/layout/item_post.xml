@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <!-- TextView to display post content -->
+    <TextView
+        android:id="@+id/PostContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Post Content"
+        android:textSize="16sp" />
+
+    <!-- ImageView to display the post image -->
+    <ImageView
+        android:id="@+id/PostImage"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="10dp"
+        android:contentDescription="Post Image"
+        android:scaleType="centerCrop" />
+</LinearLayout>
