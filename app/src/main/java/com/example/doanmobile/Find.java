@@ -22,9 +22,9 @@ public class Find extends AppCompatActivity {
     private CustomListFind findAdapter;
     private List<Post> postList;
 
-    private static final String[] items = {"điện thoại cũ", "bàn phím cơ", "kệ để dép", "giày cũ", "hehe"};
-    private static final int[] images = {R.drawable.ic_access_time, R.drawable.ic_access_time, R.drawable.ic_access_time, R.drawable.ic_access_time, R.drawable.ic_access_time};
-    private static final int[] imagesdel = {R.drawable.ic_delete, R.drawable.ic_delete, R.drawable.ic_delete, R.drawable.ic_delete, R.drawable.ic_delete};
+    private static final String[] items = {"điện thoại cũ", "bàn phím cơ", "kệ để dép", "giày cũ", "Phúc Bùi", "Xuân Tiến"};
+    private static final int[] images = {R.drawable.ic_access_time, R.drawable.ic_access_time, R.drawable.ic_access_time, R.drawable.ic_access_time, R.drawable.ic_access_time,R.drawable.ic_access_time};
+    private static final int[] imagesdel = {R.drawable.ic_delete, R.drawable.ic_delete, R.drawable.ic_delete, R.drawable.ic_delete, R.drawable.ic_delete, R.drawable.ic_delete};
 
     private SQLiteDatabase db;
 

@@ -18,6 +18,7 @@ public class Login extends AppCompatActivity {
     public static final String DATABASE_NAME = "app_database.db";
     SQLiteDatabase database;
     EditText edtUserName, edtPassword;
+    public static String username = "";
     Button btnLogin;
 
     // Hàm kiểm tra bảng tồn tại
@@ -58,6 +59,7 @@ public class Login extends AppCompatActivity {
             // Kiểm tra kết quả truy vấn
             cursor.moveToFirst();
             if (cursor.getCount() > 0) {
+                username = cursor.getString(cursor.getColumnIndexOrThrow("email"));
                 return true;
             }
         } catch (Exception ex) {

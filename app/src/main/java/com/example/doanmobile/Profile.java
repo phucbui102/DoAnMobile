@@ -69,7 +69,7 @@ public class Profile extends AppCompatActivity {
         database = openOrCreateDatabase(DATABASE_NAME, MODE_PRIVATE, null);
         createTablesIfNotExist();
 
-        loadUserData();
+        loadUserData(Login.username);
         setupGridView();
 
         btnEditProfile.setOnClickListener(v -> {
@@ -105,18 +105,20 @@ public class Profile extends AppCompatActivity {
         database.execSQL(createPostsTable);
     }
 
-    private void loadUserData() {
-        String query = "SELECT * FROM " + TABLE_USERS + " LIMIT 1";
-        try (Cursor cursor = database.rawQuery(query, null)) {
+    private void loadUserData(String username) {
+        // Truy vấn với điều kiện WHERE để tìm user cụ thể
+        String query = "SELECT * FROM " + TABLE_USERS + " WHERE email = ? LIMIT 1";
+        try (Cursor cursor = database.rawQuery(query, new String[]{username})) {
             if (cursor.moveToFirst()) {
+                // Lấy dữ liệu từ cursor và cập nhật giao diện
                 tvName.setText(cursor.getString(cursor.getColumnIndexOrThrow("fullname")));
                 tvEmail.setText(cursor.getString(cursor.getColumnIndexOrThrow("email")));
             } else {
-                addUser("Nguyễn Văn A", "nguyenvana@example.com");
-                loadUserData();
+
             }
         }
     }
+
 
     private void addUser(String fullname, String email) {
         String insertSQL = "INSERT INTO " + TABLE_USERS + " (fullname, email) VALUES (?, ?)";
