@@ -73,7 +73,8 @@ public class Profile extends AppCompatActivity {
         setupGridView();
 
         btnEditProfile.setOnClickListener(v -> {
-            Toast.makeText(this, "Chỉnh sửa profile hiện chưa được triển khai!", Toast.LENGTH_SHORT).show();
+            Intent intent =  new Intent(Profile.this, Edit_Profile.class);
+            startActivity(intent);
         });
 
         btnLogout.setOnClickListener(v -> {

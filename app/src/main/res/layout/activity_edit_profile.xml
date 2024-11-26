@@ -8,14 +8,26 @@
     android:orientation="vertical"
     tools:context=".Edit_Profile">
 
-    <View
-        android:id="@+id/topView"
+    <!-- Top View -->
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="77dp"
-        android:background="#1BB184"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="wrap_content">
+
+        <View
+            android:id="@+id/topView"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="#1BB184" />
+
+        <ImageView
+            android:id="@+id/Back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            android:background="#1BB184"
+            android:contentDescription="Logo"
+            android:src="@drawable/ic_arrow_back" />
+    </RelativeLayout>
 
     <View
         android:id="@+id/view5"

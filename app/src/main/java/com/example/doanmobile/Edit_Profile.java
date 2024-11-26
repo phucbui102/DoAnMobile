@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -16,8 +17,9 @@ public class Edit_Profile extends AppCompatActivity {
 
     public EditText etFullname, etEmail;
     public Button btnSave;
+    public ImageView Back;
     public SQLiteDatabase database;
-    public static final String DATABASE_NAME = "EShareTDMU.db";
+    public static final String DATABASE_NAME = "app_database.db";
     public static final String TABLE_NAME = "users";
 
 
@@ -27,9 +29,16 @@ public class Edit_Profile extends AppCompatActivity {
         setContentView(R.layout.activity_edit_profile);
 
         // Liên kết giao diện
-//        etFullname = findViewById(R.id.et_fullname);
-//        etEmail = findViewById(R.id.et_email);
+        etFullname = findViewById(R.id.edt_username);
+        etEmail = findViewById(R.id.edt_email);
         btnSave = findViewById(R.id.btn_save);
+        Back = findViewById(R.id.Back);
+        Back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
         // Kết nối cơ sở dữ liệu
         database = openOrCreateDatabase(DATABASE_NAME, MODE_PRIVATE, null);
