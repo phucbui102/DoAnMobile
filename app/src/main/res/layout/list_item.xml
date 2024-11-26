@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+
         android:gravity="center_vertical">
 
 <!--        <ImageView-->
@@ -62,20 +63,40 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
+        android:layout_marginBottom="10dp"
         android:text="Mình mới ăn trộm được ít đồ bạn nào cần mình pass lại ạ"
         android:textColor="@android:color/black"
         android:textSize="14sp" />
 
-    <!-- Main Image -->
-    <ImageView
-        android:id="@+id/itemImage"
+    <!-- Main Image Section -->
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        android:adjustViewBounds="true"
-        android:scaleType="fitCenter"
-        android:src="@drawable/avthehe" />
+        app:cardCornerRadius="16dp"
+        app:cardElevation="4dp"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardPreventCornerOverlap="true">
+<!--        app:cardUseCompatPadding="true">-->
+
+        <!-- FrameLayout để xếp chồng các thành phần -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- Hình ảnh chính -->
+            <ImageView
+                android:id="@+id/itemImage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:src="@drawable/avthehe" />
+
+
+
+        </FrameLayout>
+    </androidx.cardview.widget.CardView>
+    <!-- Main Image -->
 
     <!-- Action Buttons -->
     <!-- Action Buttons -->
@@ -83,6 +104,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:layout_marginTop="10dp"
         android:gravity="center_vertical">
 
         <!-- Like Button -->
