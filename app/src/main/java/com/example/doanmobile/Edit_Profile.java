@@ -127,19 +127,7 @@ public class Edit_Profile extends AppCompatActivity {
             }
         }
     }
-//    private void loadUserData() {
-//        // Lấy dữ liệu từ bảng
-//        Cursor cursor = database.rawQuery("SELECT * FROM " + TABLE_NAME + " LIMIT 1", null);
-//        if (cursor.moveToFirst()) {
-//            String fullname = cursor.getString(cursor.getColumnIndexOrThrow("fullname"));
-//            String email = cursor.getString(cursor.getColumnIndexOrThrow("email"));
-//
-//            // Hiển thị vào EditText
-//            etFullname.setText(fullname);
-//            etEmail.setText(email);
-//        }
-//        cursor.close();
-//    }
+
 
     private void updateUser(String fullname, String email, String id) {
         // Cập nhật dữ liệu trong bảng
