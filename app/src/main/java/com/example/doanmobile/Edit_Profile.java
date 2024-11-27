@@ -44,7 +44,7 @@ public class Edit_Profile extends AppCompatActivity {
         database = openOrCreateDatabase(DATABASE_NAME, MODE_PRIVATE, null);
 
         // Hiển thị thông tin hiện tại
-        loadUserData();
+        loadUserData(Login.id);
 
         // Xử lý sự kiện lưu thông tin
         btnSave.setOnClickListener(v -> {
@@ -56,6 +56,7 @@ public class Edit_Profile extends AppCompatActivity {
                 Toast.makeText(this, "Vui lòng nhập đầy đủ thông tin!", Toast.LENGTH_SHORT).show();
                 return;
             }
+
 
             // Lấy thông tin hiện tại từ cơ sở dữ liệu (hoặc biến lưu trữ sẵn)
             Cursor cursor = database.rawQuery("SELECT fullname, email FROM " + TABLE_NAME + " WHERE id = 1", null);
@@ -77,7 +78,7 @@ public class Edit_Profile extends AppCompatActivity {
             cursor.close();
 
             // Cập nhật thông tin nếu có thay đổi
-            updateUser(newFullname, newEmail);
+            updateUser(newFullname, newEmail,Login.id);
             Toast.makeText(this, "Cập nhật thành công!", Toast.LENGTH_SHORT).show();
 
             // Quay lại màn hình Profile
@@ -111,23 +112,39 @@ public class Edit_Profile extends AppCompatActivity {
         }
     }
 
-    private void loadUserData() {
-        // Lấy dữ liệu từ bảng
-        Cursor cursor = database.rawQuery("SELECT * FROM " + TABLE_NAME + " LIMIT 1", null);
-        if (cursor.moveToFirst()) {
-            String fullname = cursor.getString(cursor.getColumnIndexOrThrow("fullname"));
-            String email = cursor.getString(cursor.getColumnIndexOrThrow("email"));
 
-            // Hiển thị vào EditText
-            etFullname.setText(fullname);
-            etEmail.setText(email);
+
+    private void loadUserData(String id) {
+        // Truy vấn với điều kiện WHERE để tìm user cụ thể
+        String query = "SELECT * FROM " + TABLE_NAME + " WHERE id = ? LIMIT 1";
+        try (Cursor cursor = database.rawQuery(query, new String[]{id})) {
+            if (cursor.moveToFirst()) {
+                // Lấy dữ liệu từ cursor và cập nhật giao diện
+                etFullname.setText(cursor.getString(cursor.getColumnIndexOrThrow("fullname")));
+                etEmail.setText(cursor.getString(cursor.getColumnIndexOrThrow("email")));
+            } else {
+
+            }
         }
-        cursor.close();
+    }
+//    private void loadUserData() {
+//        // Lấy dữ liệu từ bảng
+//        Cursor cursor = database.rawQuery("SELECT * FROM " + TABLE_NAME + " LIMIT 1", null);
+//        if (cursor.moveToFirst()) {
+//            String fullname = cursor.getString(cursor.getColumnIndexOrThrow("fullname"));
+//            String email = cursor.getString(cursor.getColumnIndexOrThrow("email"));
+//
+//            // Hiển thị vào EditText
+//            etFullname.setText(fullname);
+//            etEmail.setText(email);
+//        }
+//        cursor.close();
+//    }
+
+    private void updateUser(String fullname, String email, String id) {
+        // Cập nhật dữ liệu trong bảng
+        String updateSQL = "UPDATE " + TABLE_NAME + " SET fullname = ?, email = ? WHERE id = ?";
+        database.execSQL(updateSQL, new Object[]{fullname, email, id});
     }
 
-    private void updateUser(String fullname, String email) {
-        // Cập nhật dữ liệu trong bảng
-        String updateSQL = "UPDATE " + TABLE_NAME + " SET fullname = ?, email = ? WHERE id = 1";
-        database.execSQL(updateSQL, new Object[]{fullname, email});
-    }
 }

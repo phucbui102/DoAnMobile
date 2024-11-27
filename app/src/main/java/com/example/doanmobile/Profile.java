@@ -69,7 +69,7 @@ public class Profile extends AppCompatActivity {
         database = openOrCreateDatabase(DATABASE_NAME, MODE_PRIVATE, null);
         createTablesIfNotExist();
 
-        loadUserData(Login.username);
+        loadUserData(Login.id);
         setupGridView();
 
         btnEditProfile.setOnClickListener(v -> {
@@ -105,10 +105,10 @@ public class Profile extends AppCompatActivity {
         database.execSQL(createPostsTable);
     }
 
-    private void loadUserData(String username) {
+    private void loadUserData(String id) {
         // Truy vấn với điều kiện WHERE để tìm user cụ thể
-        String query = "SELECT * FROM " + TABLE_USERS + " WHERE email = ? LIMIT 1";
-        try (Cursor cursor = database.rawQuery(query, new String[]{username})) {
+        String query = "SELECT * FROM " + TABLE_USERS + " WHERE id = ? LIMIT 1";
+        try (Cursor cursor = database.rawQuery(query, new String[]{id})) {
             if (cursor.moveToFirst()) {
                 // Lấy dữ liệu từ cursor và cập nhật giao diện
                 tvName.setText(cursor.getString(cursor.getColumnIndexOrThrow("fullname")));
